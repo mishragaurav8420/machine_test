@@ -31,6 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 CELERY_BROKER_URL='redis://localhoast:6379/0'
 CELERY_RESULT_BACKEND ='redis://localhoast:6379/0'
+CELERY_BEAT_SCHEDULE={
+    'run_task_every-5_minute':{
+        
+        'task':'app.task.my_task',
+        'schedule':300,
+    },
+}
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
