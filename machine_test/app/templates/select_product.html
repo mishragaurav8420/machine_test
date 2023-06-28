@@ -1,0 +1,14 @@
+<form method="post" action="{% url 'product_selection' %}">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" required><br><br>
+  
+    <label for="products">Select Products:</label><br>
+    {% for product in products %}
+      <input type="checkbox" name="products" value="{{ product.id }}"> {{ product.name }}<br>
+    {% endfor %}
+  
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+  
