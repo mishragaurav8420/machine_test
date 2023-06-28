@@ -29,15 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-CELERY_BROKER_URL='redis://localhoast:6379/0'
-CELERY_RESULT_BACKEND ='redis://localhoast:6379/0'
-CELERY_BEAT_SCHEDULE={
-    'run_task_every-5_minute':{
-        
-        'task':'app.task.my_task',
-        'schedule':300,
-    },
-}
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,8 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_celery_results',
-    'app'
+    'app',
 ]
+CELERY_BROKER_URL='redis://localhost:6379'
+CELERY_RESULT_BACKEND ='redis://localhost:6379'
+CELERY_TIMEZONE = 'UTC'
+CELERY_CACHE_BACKEND = 'default'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
